@@ -1,4 +1,5 @@
 package com.example.navalbattle.model;
 
-public interface IAircraftCarrier {
+public interface IShip {
+
 }

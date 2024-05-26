@@ -5,36 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="045c4e91-218c-4956-a2ad-48effe92f302" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/controller/BoardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/controller/GameController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/controller/WelcomeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/AircraftCarrier.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Destroyer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Frigate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/IAircraftCarrier.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/IDestroyer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/IFrigate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/ISubmarine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Submarine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/view/BoardStage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/view/GameStage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/view/WelcomeStage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/view/alert/AlertBox.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/view/alert/IAlertBox.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/navalbattle/images/favicon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/navalbattle/welcome-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Ship.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/AircraftCarrier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/AircraftCarrier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Destroyer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Destroyer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Frigate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Frigate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/IAircraftCarrier.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/IDestroyer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/IFrigate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/IShip.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/ISubmarine.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Submarine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Submarine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,8 +24,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -59,9 +39,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2ghfYgUU0vqzBSGEjI9JU7878OB" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -75,8 +55,9 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "macm",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Monica/IdeaProjects/NavalBattle",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -99,7 +80,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1716154781683</updated>
-      <workItem from="1716154782895" duration="10114000" />
+      <workItem from="1716154782895" duration="10298000" />
+      <workItem from="1716222288152" duration="996000" />
+      <workItem from="1716672667692" duration="1936000" />
+      <workItem from="1716740549110" duration="2612000" />
     </task>
     <servers />
   </component>
