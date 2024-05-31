@@ -22,7 +22,6 @@ public class WelcomeStage extends Stage {
         show();
     }
 
-
     public static WelcomeStage getInstance() throws IOException {
         return WelcomeStageHolder.INSTANCE = new WelcomeStage();
     }
