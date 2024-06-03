@@ -8,31 +8,45 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="16.0" style="-fx-background-color: #007090;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.navalbattle.controller.WelcomeController">
+<VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="24.0" style="-fx-background-color: linear-gradient(#007090 5%, navy);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.navalbattle.controller.WelcomeController">
    <children>
-      <Label prefHeight="60.0" prefWidth="266.0" text="Batalla Naval" textAlignment="CENTER" textFill="WHITE">
+      <Label text="Batalla Naval" textAlignment="CENTER" textFill="WHITE">
          <font>
-            <Font name="Baskerville Old Face" size="50.0" />
+            <Font name="Modern No. 20" size="80.0" />
          </font>
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <VBox.margin>
-            <Insets bottom="32.0" />
+            <Insets />
          </VBox.margin>
       </Label>
-      <Label text="ingrese su nombre:" textFill="#fafafa">
+      <VBox alignment="CENTER" fillWidth="false" prefWidth="600.0" spacing="10.0">
+         <children>
+            <Label text="Ingrese su nombre: " textFill="#fafafa">
+               <font>
+                  <Font name="Modern No. 20" size="24.0" />
+               </font>
+            </Label>
+            <TextField fx:id="playerName" alignment="CENTER" prefWidth="200.0" style="-fx-padding: 2;">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+         </children>
+      </VBox>
+      <Button mnemonicParsing="false" onAction="#startGame" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2;" text="Comenzar el Juego" textFill="WHITE">
          <font>
-            <Font name="Baskerville Old Face" size="18.0" />
-         </font>
-      </Label>
-      <TextField fx:id="playerName" />
-      <Button mnemonicParsing="false" onAction="#startGame" style="-fx-background-color: #223843;" text="Jugar" textFill="WHITE">
-         <font>
-            <Font name="Baskerville Old Face" size="17.0" />
+            <Font name="Modern No. 20" size="20.0" />
          </font>
          <cursor>
-            <Cursor fx:constant="DEFAULT" />
+            <Cursor fx:constant="HAND" />
          </cursor></Button>
    </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
 </VBox>

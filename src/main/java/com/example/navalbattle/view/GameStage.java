@@ -11,12 +11,12 @@ import java.io.IOException;
 
 public class GameStage extends Stage {
 
-   // private GameController gameController;
+    private GameController gameController;
 
     public GameStage() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/navalbattle/game-view.fxml"));
         Parent root = loader.load();
-     //   gameController = loader.getController();
+        gameController = loader.getController();
         Scene scene = new Scene(root);
         setTitle("Naval Battle");
         getIcons().add(
@@ -26,13 +26,11 @@ public class GameStage extends Stage {
         setScene(scene);
         show();
     }
-    //public GameController getGameController(){return gameController;}
 
-    //mejora del patrón Singlenton
+    public GameController getGameController(){return gameController;}
+
     public static GameStage getInstance() throws IOException{
-        return GameStageHolder.INSTANCE != null ?
-                GameStageHolder.INSTANCE :
-                (GameStageHolder.INSTANCE = new GameStage());
+        return GameStageHolder.INSTANCE = new GameStage();
     }
     public static void deleteInstance(){
         GameStageHolder.INSTANCE.close();

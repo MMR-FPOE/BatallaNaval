@@ -1,5 +1,7 @@
 package com.example.navalbattle.controller;
 
+import com.example.navalbattle.view.BoardStage;
+import com.example.navalbattle.view.WelcomeStage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -12,19 +14,19 @@ public class WelcomeController {
     private TextField playerName;
 
     /**
-     * Method associated with a Button that start GameStage
+     * Method associated with a Button that start BoardStage
      *
      * @param event         Event called when we push the button
-     * @throws IOException  Error exception
      */
+
     @FXML
-    void startGame(ActionEvent event) throws IOException{
+    void startGame(ActionEvent event) throws IOException {
         String getNickname = playerName.getText();
         if(Objects.equals(getNickname, "")){
             getNickname = "Player";
         }
-        //GameController controller = GameStage.getInstance().getGameController();
-        //controller.getPlayerNickname(getNickname);
-        //WelcomeStage.deleteInstance();
+        BoardController controller = BoardStage.getInstance().getBoardController();
+        controller.getPlayerNickname(getNickname);
+        WelcomeStage.deleteInstance();
     }
 }
