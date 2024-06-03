@@ -6,10 +6,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 public class Frigate extends Ship {
 
     private final String name = "Frigate";
     private int length = 1;
+
+    private ArrayList<Coordinate> positions = new ArrayList<Coordinate>();
     public Frigate(){
     }
 

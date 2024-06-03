@@ -1,5 +1,7 @@
 package com.example.navalbattle.model;
 
-public interface IShip {
+import java.util.ArrayList;
 
+public interface IShip {
+    void setPositions(ArrayList<Coordinate> positions);
 }

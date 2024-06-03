@@ -6,10 +6,13 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 public class Submarine extends Ship{
 
     private final String name = "Submarine";
     private int length = 3;
+
     public Submarine(){
     }
 

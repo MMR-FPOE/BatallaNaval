@@ -8,11 +8,17 @@ import javafx.scene.shape.Polyline;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 public class AircraftCarrier extends Ship{
     private final String name = "Aircraft carrier";
     private int length = 4;
+
+
     public AircraftCarrier(){
+
     }
+
 
     public void drawAircraftCarrier(Stage stage){
         Pane root = new Pane();

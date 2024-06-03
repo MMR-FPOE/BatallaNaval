@@ -6,9 +6,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 public class Destroyer extends Ship{
     private final String name = "Destroyer";
     private int length = 2;
+
     public Destroyer(){
     }
 

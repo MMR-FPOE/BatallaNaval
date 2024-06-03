@@ -5,10 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="045c4e91-218c-4956-a2ad-48effe92f302" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/ComputerBoard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Coordinate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/AircraftCarrier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/AircraftCarrier.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Destroyer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Destroyer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Frigate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Frigate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/IShip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/IShip.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Ship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Ship.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Submarine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Submarine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -43,24 +47,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;macm&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Monica/IdeaProjects/NavalBattle&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.HelloApplication.executor": "Run",
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "macm",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Monica/IdeaProjects/SudokuGame",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Monica\IdeaProjects\NavalBattle\src\main\resources\com\example\navalbattle\images" />
@@ -79,7 +83,11 @@
       <workItem from="1716222288152" duration="996000" />
       <workItem from="1716672667692" duration="1936000" />
       <workItem from="1716740549110" duration="2974000" />
-      <workItem from="1717084593102" duration="1316000" />
+      <workItem from="1717084593102" duration="1911000" />
+      <workItem from="1717178597198" duration="20000" />
+      <workItem from="1717291240400" duration="1747000" />
+      <workItem from="1717368354426" duration="4574000" />
+      <workItem from="1717441219864" duration="6236000" />
     </task>
     <servers />
   </component>
