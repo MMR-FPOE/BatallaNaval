@@ -11,10 +11,16 @@ import java.util.ArrayList;
 public class Frigate extends Ship {
 
     private final String name = "Frigate";
-    private int length = 1;
+    public int amount = 4;
 
-    private ArrayList<Coordinate> positions = new ArrayList<Coordinate>();
     public Frigate(){
+        super.length = 1;
+        super.available = true;
+    }
+
+    public boolean shipStatus(){
+        amount--;
+        return (amount == 0);
     }
 
     public void drawFrigate(Stage stage){

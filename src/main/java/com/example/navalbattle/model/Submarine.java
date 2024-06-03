@@ -11,9 +11,16 @@ import java.util.ArrayList;
 public class Submarine extends Ship{
 
     private final String name = "Submarine";
-    private int length = 3;
+    public int amount = 2;
 
     public Submarine(){
+        super.length = 3;
+        super.available = true;
+    }
+
+    public boolean shipStatus(){
+        amount--;
+        return (amount == 0);
     }
 
     public void drawSubmarine(Stage stage){

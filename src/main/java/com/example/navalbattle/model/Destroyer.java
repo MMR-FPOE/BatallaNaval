@@ -10,9 +10,16 @@ import java.util.ArrayList;
 
 public class Destroyer extends Ship{
     private final String name = "Destroyer";
-    private int length = 2;
+    public int amount = 3;
 
     public Destroyer(){
+        super.length = 2;
+        super.available = true;
+    }
+
+    public boolean shipStatus(){
+        amount--;
+        return (amount == 0);
     }
 
     public void drawFrigate(Stage stage){
@@ -69,6 +76,4 @@ public class Destroyer extends Ship{
         stage.setScene(scene);
         stage.show();
     }
-
-
 }

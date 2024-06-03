@@ -11,14 +11,18 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 
 public class AircraftCarrier extends Ship{
-    private final String name = "Aircraft carrier";
-    private int length = 4;
-
+    private final String name = "Portaavión";
+    public int amount = 1;
 
     public AircraftCarrier(){
-
+        super.length = 4;
+        super.available = true;
     }
-
+  
+    public boolean shipStatus(){
+        amount--;
+        return (amount == 0);
+    }
 
     public void drawAircraftCarrier(Stage stage){
         Pane root = new Pane();
@@ -77,5 +81,4 @@ public class AircraftCarrier extends Ship{
         stage.show();
 
     }
-
 }
