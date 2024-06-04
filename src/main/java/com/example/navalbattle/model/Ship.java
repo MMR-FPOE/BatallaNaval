@@ -3,24 +3,15 @@ package com.example.navalbattle.model;
 import java.util.ArrayList;
 
 public class Ship {
-    private final String name = "Barco";
-    private int length;
-  
+    public char name;
+    public int length;
+    public int amount;
     public boolean available = true;
-  
-    private ArrayList<ArrayList<Coordinate>> positions = new ArrayList<>();
-  
+
+    protected ArrayList<LogicShip> gameShips = new ArrayList<>();
+
     public Ship(){
     }
-
-    public void setPositions(ArrayList<Coordinate> positions) {
-        this.positions.add(positions);
-    }
-
-    public ArrayList<ArrayList<Coordinate>> getPositions() {
-        return positions;
-    }
-}
 
     public int getLength() {
         return length;
@@ -32,4 +23,12 @@ public class Ship {
         this.available = false;
     }
 
+    public boolean shipStatus(){
+        amount--;
+        return (amount == 0);
+    }
+
+    public ArrayList<LogicShip> getLogicShip(){
+        return gameShips;
+    }
 }

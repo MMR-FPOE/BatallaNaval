@@ -9,18 +9,29 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 
 public class Submarine extends Ship{
-
-    private final String name = "Submarine";
     public int amount = 2;
 
+    public LogicShip logicShip;
+
     public Submarine(){
+        super.name = 'S';
         super.length = 3;
         super.available = true;
+        logicShip = new LogicShip(super.length);
     }
 
     public boolean shipStatus(){
         amount--;
         return (amount == 0);
+    }
+
+    public void submitShip(){
+        gameShips.add(logicShip);
+        logicShip = new LogicShip(super.length);
+    }
+
+    public void addShipCoordinates(int row, int column){
+        logicShip.addShip(row,column);
     }
 
     public void drawSubmarine(Stage stage){

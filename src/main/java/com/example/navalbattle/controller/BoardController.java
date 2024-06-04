@@ -29,6 +29,9 @@ public class BoardController {
     BattleFieldPane battleFieldPane;
     ArrayList<ArrayList<BattleFieldPane>> battleFieldMatrix = new ArrayList<>();
 
+    PlayerBoard playerBoard = new PlayerBoard();
+    ComputerBoard computerBoard = new ComputerBoard();
+
     @FXML
     private Label playerNickname;
 
@@ -59,6 +62,7 @@ public class BoardController {
             }
             battleFieldMatrix.add(row);
         }
+        computerBoard.showMatrix();
     }
 
     private void mouseEventClick(MouseEvent event, String type){
@@ -74,30 +78,42 @@ public class BoardController {
 
         switch(type){
             case "clicked":
-                ArrayList<BattleFieldPane> arrayList = new ArrayList();
+                ArrayList<BattleFieldPane> arrayList = new ArrayList<>();
+                ArrayList<Coordinate> coordinates = new ArrayList<>();
                 boolean isClickable = true;
 
                 for(int i = iter; i < iter + shipLength; i++){
                     BattleFieldPane bPane;
-                    if(shipOrientation == 1){bPane = battleFieldMatrix.get(row).get(i);}
-                    else{bPane = battleFieldMatrix.get(i).get(column);}
+                    Coordinate coordinate;
+                    if(shipOrientation == 1){
+                        bPane = battleFieldMatrix.get(row).get(i);
+                        coordinate = new Coordinate(row,i);
+                    }
+                    else{
+                        bPane = battleFieldMatrix.get(i).get(column);
+                        coordinate = new Coordinate(i, column);
+                    }
 
                     if(bPane.getIsClicked()){
                         isClickable = false;
                         break;}
-                    arrayList.add(bPane);}
+                    arrayList.add(bPane);
+                    coordinates.add(coordinate);}
 
                 if(isClickable){
                     for (BattleFieldPane element : arrayList){
-                        element.onPaneClicked();
-                        element.setIsClicked();}
+                        element.onPaneClicked();}
 
-                    if(ship.shipStatus()){
+                    for (Coordinate coordinate: coordinates){
+                        playerBoard.setCharacter(ship.name, coordinate.row, coordinate.column);
+                    }
+
+                    if (ship.shipStatus()){
                         button.setDisable(true);
                         ship.setAvailability();
                         gameReadyToStart++;}
 
-                    if(gameReadyToStart == 4){startGameButton.setDisable(false);}
+                    if (gameReadyToStart == 4){startGameButton.setDisable(false);}
                 }
 
             case "entered":
@@ -147,7 +163,7 @@ public class BoardController {
     }
 
     public void startGame(){
-        System.out.println("Iniciemos entonces");
+        playerBoard.showMatrix();
     }
 
     public void getPlayerNickname(String nickname){

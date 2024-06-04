@@ -32,19 +32,8 @@ public class BattleFieldPane {
         return pane;
     }
 
-    public void setIsClicked(){
-        isClicked = true;
-    }
-
     public boolean getIsClicked(){
         return isClicked;
     }
 
-    public int getRow(){
-        return row;
-    }
-
-    public int getColumn(){
-        return column;
-    }
 }

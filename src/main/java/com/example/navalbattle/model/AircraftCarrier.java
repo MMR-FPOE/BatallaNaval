@@ -11,17 +11,29 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 
 public class AircraftCarrier extends Ship{
-    private final String name = "Portaavión";
     public int amount = 1;
 
+    public LogicShip logicShip;
+
     public AircraftCarrier(){
+        super.name = 'A';
         super.length = 4;
         super.available = true;
+        logicShip = new LogicShip(super.length);
     }
   
     public boolean shipStatus(){
         amount--;
         return (amount == 0);
+    }
+
+    public void submitShip(){
+        gameShips.add(logicShip);
+        logicShip = new LogicShip(super.length);
+    }
+
+    public void addShipCoordinates(int row, int column){
+        logicShip.addShip(row,column);
     }
 
     public void drawAircraftCarrier(Stage stage){
