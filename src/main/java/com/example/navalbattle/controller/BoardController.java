@@ -114,14 +114,13 @@ public class BoardController {
                     for (BattleFieldPane element : arrayList){
                         element.onPaneClicked();
                         if (ship instanceof AircraftCarrier){
-                            //battleField.add(aircraft.drawAircraftCarrier(), element.getRow(), element.getColumn());
-                            battleField.add(aircraft.drawAircraftCarrier(), ship.getFirstCoordinate().getRow(), ship.getFirstCoordinate().getColumn());
+                            battleField.add(aircraft.drawAircraftCarrier(), ship.getFirstCoordinate().getColumn(), ship.getFirstCoordinate().getRow());
                         }else if (ship instanceof Submarine) {
-                            battleField.add(submarine.drawSubmarine(), ship.getFirstCoordinate().getRow(), ship.getFirstCoordinate().getColumn());
+                            battleField.add(submarine.drawSubmarine(), ship.getFirstCoordinate().getColumn(), ship.getFirstCoordinate().getRow());
                         } else if (ship instanceof Destroyer) {
-                            battleField.add(destroyer.drawDestroyer(), ship.getFirstCoordinate().getRow(), ship.getFirstCoordinate().getColumn());
+                            battleField.add(destroyer.drawDestroyer(), ship.getFirstCoordinate().getColumn(), ship.getFirstCoordinate().getRow());
                         } else if (ship instanceof Frigate) {
-                            battleField.add(frigate.drawFrigate(), ship.getFirstCoordinate().getRow(), ship.getFirstCoordinate().getColumn());
+                            battleField.add(frigate.drawFrigate(), ship.getFirstCoordinate().getColumn(), ship.getFirstCoordinate().getRow());
                         }
                     }
 
