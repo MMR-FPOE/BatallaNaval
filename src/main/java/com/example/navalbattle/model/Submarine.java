@@ -1,5 +1,6 @@
 package com.example.navalbattle.model;
 
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -34,14 +35,10 @@ public class Submarine extends Ship{
         logicShip.addShip(row,column);
     }
 
-    public void drawSubmarine(Stage stage){
+    public Group drawSubmarine(){
 
-        Pane root = new Pane();
-        root.setPrefSize(800, 400);
-        root.setStyle("""
-                -fx-padding: 10;
-            """);
         Path path = new Path();
+        Group submarineGroup = new Group();
 
         MoveTo moveto = new MoveTo(410, 50);
         ArcTo arc = new ArcTo();
@@ -64,7 +61,6 @@ public class Submarine extends Ship{
         r5.setStroke(Color.GRAY);
 
         Path aleta = new Path(
-
                 new MoveTo(407.4, 122),
                 new LineTo(410, 130),
                 new VLineTo(134),
@@ -73,12 +69,10 @@ public class Submarine extends Ship{
         aleta.setFill(Color.BLACK);
 
         Path aleta2 = new Path(
-
                 new MoveTo(393, 122),
                 new LineTo(390.4, 130),
                 new VLineTo(134),
                 new HLineTo(396.4)
-
         );
         aleta2.setFill(Color.BLACK);
 
@@ -94,11 +88,8 @@ public class Submarine extends Ship{
         path.setFill(Color.DARKGREY);
         path.setStroke(Color.BLACK);
 
-        root.getChildren().addAll(path, r1, r2,r4, r5, aleta, aleta2, aleta3);
-        Scene scene = new Scene(root);
-        stage.setTitle("Submarine");
-        stage.setScene(scene);
-        stage.show();
+        submarineGroup.getChildren().addAll(path, r1, r2,r4, r5, aleta, aleta2, aleta3);
+        return submarineGroup;
     }
 
 }

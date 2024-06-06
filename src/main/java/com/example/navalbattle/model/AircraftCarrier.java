@@ -1,5 +1,6 @@
 package com.example.navalbattle.model;
 
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -36,13 +37,9 @@ public class AircraftCarrier extends Ship{
         logicShip.addShip(row,column);
     }
 
-    public void drawAircraftCarrier(Stage stage){
-        Pane root = new Pane();
+    public Group drawAircraftCarrier(){
 
-        root.setPrefSize(800, 400);
-        root.setStyle("""
-                -fx-padding: 10;
-            """);
+        Group aircraftGroup = new Group();
 
         Polyline polyline = new Polyline();
         polyline.getPoints().addAll(
@@ -86,11 +83,8 @@ public class AircraftCarrier extends Ship{
         Line line14 = new Line (382, 130, 402, 130);
         line14.setStroke(Color.WHITE);
 
-        root.getChildren().addAll(polyline, rectangle, rectangle2, rectangle3, line6, line7, line8, line9, line10, line11, line12, line13, line14);
-        Scene scene = new Scene(root);
-        stage.setTitle("Aircraft Carrier");
-        stage.setScene(scene);
-        stage.show();
+        aircraftGroup.getChildren().addAll(polyline, rectangle, rectangle2, rectangle3, line6, line7, line8, line9, line10, line11, line12, line13, line14);
 
+        return aircraftGroup;
     }
 }

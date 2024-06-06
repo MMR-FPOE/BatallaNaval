@@ -30,7 +30,7 @@ public class GameStage extends Stage {
     public GameController getGameController(){return gameController;}
 
     public static GameStage getInstance() throws IOException{
-        return GameStageHolder.INSTANCE = new GameStage();
+        return GameStageHolder.INSTANCE != null ? GameStageHolder.INSTANCE : (GameStageHolder.INSTANCE = new GameStage());
     }
     public static void deleteInstance(){
         GameStageHolder.INSTANCE.close();

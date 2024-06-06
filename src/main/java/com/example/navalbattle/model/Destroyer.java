@@ -1,5 +1,6 @@
 package com.example.navalbattle.model;
 
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -34,14 +35,10 @@ public class Destroyer extends Ship{
         logicShip.addShip(row,column);
     }
 
-    public void drawFrigate(Stage stage){
-        Pane root = new Pane();
-        root.setPrefSize(800, 400);
-        root.setStyle("""
-                -fx-padding: 10;
-            """);
+    public Group drawDestroyer(){
         Path path = new Path();
 
+        Group destroyerGroup = new Group();
         MoveTo moveto = new MoveTo(412, 50);
 
         HLineTo l1 = new HLineTo(420);
@@ -82,10 +79,9 @@ public class Destroyer extends Ship{
 
         path.getElements().addAll(moveto, l1, l2, l3, l4, l5, l6, l7);
         path.setFill(Color.LIGHTSLATEGRAY);
-        root.getChildren().addAll(path, r1, r2, r3, c1, white, white2, white3);
-        Scene scene = new Scene(root);
-        stage.setTitle("Destroyer");
-        stage.setScene(scene);
-        stage.show();
+        destroyerGroup.getChildren().addAll(path, r1, r2, r3, c1, white, white2, white3);
+
+        return destroyerGroup;
+
     }
 }

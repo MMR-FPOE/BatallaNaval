@@ -26,8 +26,8 @@ public class BattleFieldPane {
     public void onPaneClicked(){
         pane.setStyle("-fx-background-color: orange");
         isClicked = true;
-    }
 
+    }
     public Pane getPane(){
         return pane;
     }

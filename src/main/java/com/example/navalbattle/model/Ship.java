@@ -6,6 +6,8 @@ public class Ship {
     public char name;
     public int length;
     public int amount;
+    public Coordinate firstCoordinate;
+
     public boolean available = true;
 
     protected ArrayList<LogicShip> gameShips = new ArrayList<>();
@@ -30,5 +32,13 @@ public class Ship {
 
     public ArrayList<LogicShip> getLogicShip(){
         return gameShips;
+    }
+
+    public void setFirstCoordinate(Coordinate firstCoordinate) {
+        this.firstCoordinate = firstCoordinate;
+    }
+
+    public Coordinate getFirstCoordinate() {
+        return firstCoordinate;
     }
 }

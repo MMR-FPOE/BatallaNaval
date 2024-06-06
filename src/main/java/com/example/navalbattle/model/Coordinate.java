@@ -9,4 +9,11 @@ public class Coordinate{
         this.row = row;
     }
 
+    public int getRow() {
+        return row;
+    }
+
+    public int getColumn() {
+        return column;
+    }
 }

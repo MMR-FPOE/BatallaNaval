@@ -38,6 +38,7 @@ public class PlayerBoard {
         matrix.get(row).set(column, character);
     }
 
+
 //    private void trowBomb(){
 //        Random random = new Random();
 //        int row = random.nextInt(10);

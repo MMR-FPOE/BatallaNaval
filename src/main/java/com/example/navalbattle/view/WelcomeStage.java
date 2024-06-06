@@ -23,7 +23,7 @@ public class WelcomeStage extends Stage {
     }
 
     public static WelcomeStage getInstance() throws IOException {
-        return WelcomeStageHolder.INSTANCE = new WelcomeStage();
+        return WelcomeStage.WelcomeStageHolder.INSTANCE != null ? WelcomeStage.WelcomeStageHolder.INSTANCE : (WelcomeStage.WelcomeStageHolder.INSTANCE = new WelcomeStage());
     }
 
     public static void deleteInstance() {

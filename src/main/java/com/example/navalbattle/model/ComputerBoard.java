@@ -60,10 +60,10 @@ public class ComputerBoard {
         destroyer.addShipCoordinates(5, 0);
         destroyer.submitShip();
 
-        frigate.addShipCoordinates(8, 2);
+        frigate.addShipCoordinates(8, 1);
         frigate.submitShip();
         
-        frigate.addShipCoordinates(8, 0);
+        frigate.addShipCoordinates(8, 6);
         frigate.submitShip();
         
         frigate.addShipCoordinates(0, 3);
