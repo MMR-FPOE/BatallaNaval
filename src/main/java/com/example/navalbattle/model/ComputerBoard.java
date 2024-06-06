@@ -1,13 +1,11 @@
 package com.example.navalbattle.model;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
-public class ComputerBoard {
+public class ComputerBoard extends Board{
     public ArrayList<ArrayList<Character>> matrix = new ArrayList<>();;
 
+    public ArrayList<Coordinate> shotsFired = new ArrayList<>();
     AircraftCarrier aircraft = new AircraftCarrier();
     Destroyer destroyer = new Destroyer();
     Frigate frigate = new Frigate();
@@ -158,7 +156,7 @@ public class ComputerBoard {
         frigate.submitShip();
     }
 
-    private void createMatrix(){
+    public void createMatrix(){
         for(int i = 0; i < 10; i++){
             ArrayList<Character> row = new ArrayList<>();
             for(int j = 0; j < 10; j++){
@@ -190,9 +188,22 @@ public class ComputerBoard {
         }
     }
 
-//    private void trowBomb(){
-//        Random random = new Random();
-//        int row = random.nextInt(10);
-//        int column = random.nextInt(10);
-//    }
+    public ArrayList<ArrayList<Character>> getMatrix() {
+        return this.matrix;
+    }
+
+    public void setCharacter(Character character, int row, int column){
+        matrix.get(row).set(column, character);
+    }
+
+    public Coordinate trowBomb(){
+
+        Random random = new Random();
+        int row = random.nextInt(10);
+        int column = random.nextInt(10);
+
+        Coordinate coord = new Coordinate(row, column);
+
+        return coord;
+    }
 }

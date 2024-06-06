@@ -6,6 +6,11 @@ import com.example.navalbattle.view.GameStage;
 import com.example.navalbattle.view.WelcomeStage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.HPos;
+import javafx.geometry.Insets;
+import javafx.geometry.VPos;
+import javafx.print.Printer;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
@@ -19,14 +24,10 @@ import java.util.Objects;
 
 public class BoardController {
     Ship ship;
-    AircraftCarrier aircraft = new AircraftCarrier();
-    Destroyer destroyer = new Destroyer();
-    Frigate frigate = new Frigate();
-    Submarine submarine = new Submarine();
-
     int shipLength = 1;
-    int shipOrientation = 1;
+    boolean shipOrientation = true;
     int gameReadyToStart = 0;
+    String nickname;
 
     ToggleButton button;
 
@@ -52,7 +53,7 @@ public class BoardController {
     private ToggleButton frigateButton;
 
     public void initialize() {
-        ship = frigate;
+        ship = playerBoard.getFrigate();
         button = frigateButton;
 
         for (int i = 0; i < 10; i++) {
@@ -76,7 +77,7 @@ public class BoardController {
         int column = GridPane.getColumnIndex(pane);
         int iter;
 
-        if(shipOrientation == 1){ iter = column;}
+        if(shipOrientation){ iter = column;}
         else{ iter = row;}
         if(iter + shipLength > 9){ iter = 10 - shipLength;}
         if(ship.getAvailability()){ type = "unavailable";}
@@ -90,18 +91,15 @@ public class BoardController {
                 for(int i = iter; i < iter + shipLength; i++){
                     BattleFieldPane bPane;
                     Coordinate coordinate;
-                    if(shipOrientation == 1) {
+                    if(shipOrientation) {
                         bPane = battleFieldMatrix.get(row).get(i);
                         coordinate = new Coordinate(row, i);
-                        if (i == iter) {
-                            ship.setFirstCoordinate(coordinate);
-                        }
                     }else{
                         bPane = battleFieldMatrix.get(i).get(column);
                         coordinate = new Coordinate(i, column);
-                        if (i == iter){
-                            ship.setFirstCoordinate(coordinate);
-                        }
+                    }
+                    if (i == iter) {
+                        ship.setFirstCoordinate(coordinate);
                     }
 
                     if(bPane.getIsClicked()){
@@ -112,17 +110,31 @@ public class BoardController {
 
                 if(isClickable){
                     for (BattleFieldPane element : arrayList){
-                        element.onPaneClicked();
-                        if (ship instanceof AircraftCarrier){
-                            battleField.add(aircraft.drawAircraftCarrier(), ship.getFirstCoordinate().getColumn(), ship.getFirstCoordinate().getRow());
-                        }else if (ship instanceof Submarine) {
-                            battleField.add(submarine.drawSubmarine(), ship.getFirstCoordinate().getColumn(), ship.getFirstCoordinate().getRow());
-                        } else if (ship instanceof Destroyer) {
-                            battleField.add(destroyer.drawDestroyer(), ship.getFirstCoordinate().getColumn(), ship.getFirstCoordinate().getRow());
-                        } else if (ship instanceof Frigate) {
-                            battleField.add(frigate.drawFrigate(), ship.getFirstCoordinate().getColumn(), ship.getFirstCoordinate().getRow());
-                        }
+                        element.onPaneClicked();}
+
+                    Node node = null;
+
+                    if (ship instanceof AircraftCarrier){
+                        node = ((AircraftCarrier) ship).drawShip(shipOrientation);
+                    }else if (ship instanceof Submarine) {
+                        node = ((Submarine) ship).drawShip(shipOrientation);
+                    } else if (ship instanceof Destroyer) {
+                        node = ((Destroyer) ship).drawShip(shipOrientation);
+                    } else if (ship instanceof Frigate) {
+                        node = ((Frigate) ship).drawShip(shipOrientation);
                     }
+
+                    battleField.add(node, ship.getFirstCoordinate().getColumn(), ship.getFirstCoordinate().getRow());
+
+                    GridPane.setHalignment(node, HPos.CENTER);
+                    GridPane.setValignment(node, VPos.CENTER);
+
+                    if (shipOrientation)
+                        GridPane.setColumnSpan(node, shipLength);
+                    else
+                        GridPane.setRowSpan(node, shipLength);
+
+                    GridPane.setMargin(node, new Insets(10));
 
                     for (Coordinate coordinate: coordinates){
                         playerBoard.setCharacter(ship.name, coordinate.row, coordinate.column);
@@ -139,7 +151,7 @@ public class BoardController {
             case "entered":
                 for(int i = iter; i < iter + shipLength; i++){
                     BattleFieldPane bPane;
-                    if(shipOrientation == 1){bPane = battleFieldMatrix.get(row).get(i);}
+                    if(shipOrientation){bPane = battleFieldMatrix.get(row).get(i);}
                     else{bPane = battleFieldMatrix.get(i).get(column);}
                     if(!bPane.getIsClicked())
                         bPane.onPaneEntered();}
@@ -148,7 +160,7 @@ public class BoardController {
             case "exited":
                 for(int i = iter; i < iter + shipLength; i++){
                     BattleFieldPane bPane;
-                    if(shipOrientation == 1){bPane = battleFieldMatrix.get(row).get(i);}
+                    if(shipOrientation){bPane = battleFieldMatrix.get(row).get(i);}
                     else{bPane = battleFieldMatrix.get(i).get(column);}
                     if(!bPane.getIsClicked())
                         bPane.onPaneExited();}
@@ -162,35 +174,38 @@ public class BoardController {
     public void toggleButtonPressed(ActionEvent event){
         button = (ToggleButton) event.getSource();
         if(Objects.equals(button.getId(), "frigateButton")){
-            ship = frigate;
+            ship = playerBoard.getFrigate();
         }
         else if(Objects.equals(button.getId(), "destroyerButton")){
-            ship = destroyer;
+            ship = playerBoard.getDestroyer();
         }
         else if(Objects.equals(button.getId(),"submarineButton")){
-            ship = submarine;
+            ship = playerBoard.getSubmarine();
         }
         else if(Objects.equals(button.getId(), "aircraftCarrierButton")){
-            ship = aircraft;
+            ship = playerBoard.getAircraftCarrier();
         }
         shipLength = ship.getLength();
     }
 
     public void changeShipOrientation(ActionEvent event){
-        shipOrientation *= -1;
-        if(shipOrientation == -1){ shipOrientationButton.setText("\uD83E\uDC59");}
-        else{shipOrientationButton.setText("\uD83E\uDC58");}
+        shipOrientation = !shipOrientation;
+        if(shipOrientation){ shipOrientationButton.setText("\uD83E\uDC58");}
+        else{shipOrientationButton.setText("\uD83E\uDC59");}
     }
 
     public void startGame() throws IOException {
-        playerBoard.showMatrix();
-
         GameController controller = GameStage.getInstance().getGameController();
-      //  controller.getPlayerNickname(getNickname);
+        controller.setPlayerNickname(nickname);
+        controller.setPlayerBoard(playerBoard);
+        controller.setComputerBoard(computerBoard);
+//        controller.getPlayerNickname(getNickname);
         BoardStage.deleteInstance();
     }
 
     public void getPlayerNickname(String nickname){
+        this.nickname = nickname;
         playerNickname.setText("Bienvenido: " + nickname);
     }
+
 }
