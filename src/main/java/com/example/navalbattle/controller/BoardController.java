@@ -19,14 +19,14 @@ import java.util.Objects;
 
 public class BoardController {
     Ship ship;
-    AircraftCarrier aircraft = new AircraftCarrier();
+     AircraftCarrier aircraft = new AircraftCarrier();
     Destroyer destroyer = new Destroyer();
     Frigate frigate = new Frigate();
     Submarine submarine = new Submarine();
-
     int shipLength = 1;
     int shipOrientation = 1;
     int gameReadyToStart = 0;
+    String nickname;
 
     ToggleButton button;
 
@@ -186,11 +186,18 @@ public class BoardController {
         playerBoard.showMatrix();
 
         GameController controller = GameStage.getInstance().getGameController();
-      //  controller.getPlayerNickname(getNickname);
+        controller.setPlayerNickname(nickname);
+       controller.setPlayerBoard(playerBoard);
+       controller.setComputerBoard(computerBoard);
         BoardStage.deleteInstance();
     }
 
     public void getPlayerNickname(String nickname){
+        if (nickname == null){
+            this.nickname = "Player";
+        }
+        this.nickname = nickname;
         playerNickname.setText("Bienvenido: " + nickname);
     }
+
 }

@@ -2,9 +2,10 @@ package com.example.navalbattle.model;
 
 import java.util.ArrayList;
 
-public class PlayerBoard {
+public class PlayerBoard extends Board{
     public ArrayList<ArrayList<Character>> matrix = new ArrayList<>();;
 
+    String playerNickName;
     AircraftCarrier aircraft = new AircraftCarrier();
     Destroyer destroyer = new Destroyer();
     Frigate frigate = new Frigate();
@@ -14,7 +15,7 @@ public class PlayerBoard {
         createMatrix();
     }
 
-    private void createMatrix(){
+    public void createMatrix(){
         for(int i = 0; i < 10; i++){
             ArrayList<Character> row = new ArrayList<>();
             for(int j = 0; j < 10; j++){
@@ -38,10 +39,18 @@ public class PlayerBoard {
         matrix.get(row).set(column, character);
     }
 
+    public ArrayList<ArrayList<Character>> getMatrix() {
+        return matrix;
+    }
 
-//    private void trowBomb(){
-//        Random random = new Random();
-//        int row = random.nextInt(10);
-//        int column = random.nextInt(10);
-//    }
+    public void setPlayerNickName(String playerNickName) {
+        if (playerNickName == null){
+            playerNickName = "Player";
+        }
+        this.playerNickName = playerNickName;
+    }
+
+    public String getPlayerNickName() {
+        return playerNickName;
+    }
 }

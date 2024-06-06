@@ -1,5 +1,6 @@
 package com.example.navalbattle.controller;
 
+import com.example.navalbattle.model.Board;
 import com.example.navalbattle.view.BoardStage;
 import com.example.navalbattle.view.WelcomeStage;
 import javafx.event.ActionEvent;
