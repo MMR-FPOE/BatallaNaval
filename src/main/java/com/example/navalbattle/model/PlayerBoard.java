@@ -24,24 +24,15 @@ public class PlayerBoard {
         }
     }
 
-    public void showMatrix(){
-        System.out.println("Player Matrix");
-        for(ArrayList<Character> row: matrix){
-            for(Character character: row){
-                System.out.print(character + " ");
-            }
-            System.out.println(" ");
-        }
-    }
-
     public void setCharacter(Character character, int row, int column){
         matrix.get(row).set(column, character);
     }
 
+    public void getAircraftCarrier(){ return aircraft;}
 
-//    private void trowBomb(){
-//        Random random = new Random();
-//        int row = random.nextInt(10);
-//        int column = random.nextInt(10);
-//    }
+    public void getDestroyer(){ return destroyer;}
+    
+    public void getFrigate(){ return frigate;}
+
+    public void getSubmarine(){ return submarine; }
 }

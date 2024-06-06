@@ -24,10 +24,6 @@ import java.util.Objects;
 
 public class BoardController {
     Ship ship;
-    AircraftCarrier aircraft = new AircraftCarrier();
-    Destroyer destroyer = new Destroyer();
-    Frigate frigate = new Frigate();
-    Submarine submarine = new Submarine();
 
     int shipLength = 1;
     boolean shipOrientation = true;
@@ -57,7 +53,7 @@ public class BoardController {
     private ToggleButton frigateButton;
 
     public void initialize() {
-        ship = frigate;
+        ship = playerBoard.getFrigate();
         button = frigateButton;
 
         for (int i = 0; i < 10; i++) {
@@ -178,16 +174,16 @@ public class BoardController {
     public void toggleButtonPressed(ActionEvent event){
         button = (ToggleButton) event.getSource();
         if(Objects.equals(button.getId(), "frigateButton")){
-            ship = frigate;
+            ship = playerBoard.getFrigate();
         }
         else if(Objects.equals(button.getId(), "destroyerButton")){
-            ship = destroyer;
+            ship = playerBoard.getDestroyer();
         }
         else if(Objects.equals(button.getId(),"submarineButton")){
-            ship = submarine;
+            ship = playerBoard.getSubmarine();
         }
         else if(Objects.equals(button.getId(), "aircraftCarrierButton")){
-            ship = aircraft;
+            ship = playerBoard.getAircraftCarrier();
         }
         shipLength = ship.getLength();
     }
@@ -199,10 +195,8 @@ public class BoardController {
     }
 
     public void startGame() throws IOException {
-        playerBoard.showMatrix();
-
         GameController controller = GameStage.getInstance().getGameController();
-      //  controller.getPlayerNickname(getNickname);
+        controller.getPlayerNickname(getNickname);
         BoardStage.deleteInstance();
     }
 

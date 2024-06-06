@@ -179,20 +179,4 @@ public class ComputerBoard {
             }
         }
     }
-
-    public void showMatrix(){
-        System.out.println("Computer Matrix");
-        for(ArrayList<Character> row: matrix){
-            for(Character character: row){
-                System.out.print(character + " ");
-            }
-            System.out.println(" ");
-        }
-    }
-
-//    private void trowBomb(){
-//        Random random = new Random();
-//        int row = random.nextInt(10);
-//        int column = random.nextInt(10);
-//    }
 }
