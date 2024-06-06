@@ -9,7 +9,6 @@ public class Ship {
     public Coordinate firstCoordinate;
 
     public boolean available = true;
-
     protected ArrayList<LogicShip> gameShips = new ArrayList<>();
 
     public Ship(){
@@ -30,7 +29,7 @@ public class Ship {
         return (amount == 0);
     }
 
-    public ArrayList<LogicShip> getLogicShip(){
+    public ArrayList<LogicShip> getLogicShips(){
         return gameShips;
     }
 

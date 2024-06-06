@@ -33,58 +33,57 @@ public class AircraftCarrier extends Ship{
         logicShip = new LogicShip(super.length);
     }
 
-    public void addShipCoordinates(int row, int column){
-        logicShip.addShip(row,column);
+    public void addShipCoordinates(int row, int column, boolean shipOrientation){
+        logicShip.addShip(row,column, shipOrientation);
     }
 
-    public Group drawAircraftCarrier(){
-
+    public Group drawShip(boolean rotate){
         Group aircraftGroup = new Group();
 
         Polyline polyline = new Polyline();
         polyline.getPoints().addAll(
-                400.0, 0.0,
-                410.0, 0.0,
-                420.0, 40.0,
-                430.0, 50.0,
-                430.0, 130.0,
-                425.0, 135.0,
-                385.0, 135.0,
-                380.0, 130.0,
-                380.0, 50.0,
-                390.0, 40.0,
-                400.0, 0.0
+                15.0, 0.0,
+                25.0, 0.0,
+                30.0, 40.0,
+                35.0, 50.0,
+                35.0, 140.0,
+                32.5, 145.0,
+                7.5, 145.0,
+                5.0, 140.0,
+                5.0, 50.0,
+                10.0, 40.0,
+                15.0, 0.0
         );
         polyline.setStroke(Color.BLACK);
         polyline.setFill(Color.GRAY);
 
-        Rectangle rectangle = new Rectangle(415, 78, 11, 30);
-        rectangle.setFill(Color.DARKGRAY);
-        Rectangle rectangle2 = new Rectangle(415, 60, 10, 10);
-        Rectangle rectangle3 = new Rectangle(415, 115, 11, 12);
+        Rectangle rectangle3 = new Rectangle(25, 105, 5, 12);
         rectangle3.setFill(Color.DARKSLATEGRAY);
+        Rectangle rectangle = new Rectangle(25, 68, 5, 30);
+        rectangle.setFill(Color.DARKGRAY);
+        Rectangle rectangle2 = new Rectangle(25, 50, 5, 10);
 
-        Line line6 = new Line (402, 10, 402, 130);
+        Line line6 = new Line (20, 1, 20, 144);
         line6.setStroke(Color.WHITE);
-        Line line7 = new Line (390, 50, 390, 130);
+        Line line7 = new Line (10, 50, 10, 144);
         line7.setStroke(Color.WHITE);
-        Line line8 = new Line (382, 70, 402, 70);
+        Line line8 = new Line (6, 50, 20, 50);
         line8.setStroke(Color.WHITE);
-        Line line9 = new Line (382, 90, 402, 90);
+        Line line9 = new Line (6, 70, 20, 70);
         line9.setStroke(Color.WHITE);
-        Line line10 = new Line (382, 110, 402, 110);
+        Line line10 = new Line (6, 90, 20, 90);
         line10.setStroke(Color.WHITE);
-        Line line11 = new Line (382, 50, 402, 50);
+        Line line11 = new Line (6, 110, 20, 110);
         line11.setStroke(Color.WHITE);
-        Line line12 = new Line (392.98, 30, 402, 30);
+        Line line12 = new Line (6, 130, 20, 130);
         line12.setStroke(Color.WHITE);
-        Line line13 = new Line (399, 10, 402, 10);
-        line13.setStroke(Color.WHITE);
-        Line line14 = new Line (382, 130, 402, 130);
-        line14.setStroke(Color.WHITE);
 
-        aircraftGroup.getChildren().addAll(polyline, rectangle, rectangle2, rectangle3, line6, line7, line8, line9, line10, line11, line12, line13, line14);
+        aircraftGroup.getChildren().addAll(polyline, rectangle, rectangle2, rectangle3, line6, line7, line8, line9, line10, line11, line12);
+
+        if(rotate)
+            aircraftGroup.setRotate(90);
 
         return aircraftGroup;
     }
+
 }

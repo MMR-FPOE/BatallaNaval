@@ -31,14 +31,15 @@ public class Frigate extends Ship {
         logicShip = new LogicShip(super.length);
     }
 
-    public void addShipCoordinates(int row, int column){
-        logicShip.addShip(row,column);
+    public void addShipCoordinates(int row, int column, boolean shipOrientation){
+        logicShip.addShip(row,column, shipOrientation);
     }
 
-    public Group drawFrigate(){
+    public Group drawShip(boolean rotate){
+        Group frigateGroup = new Group();
 
         Path path = new Path();
-        Group frigateGroup = new Group();
+
         MoveTo moveto = new MoveTo(412, 50);
 
         HLineTo l1 = new HLineTo(424);
@@ -62,6 +63,9 @@ public class Frigate extends Ship {
         path.getElements().addAll(moveto, l1, l2, l3, l4, l5);
         path.setFill(Color.LIGHTSLATEGRAY);
         frigateGroup.getChildren().addAll(path, r1, c1, white);
+
+        if(rotate)
+            frigateGroup.setRotate(90);
 
         return frigateGroup;
     }

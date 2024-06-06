@@ -3,6 +3,10 @@ package com.example.navalbattle.controller;
 import com.example.navalbattle.model.*;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
+import javafx.geometry.HPos;
+import javafx.geometry.Insets;
+import javafx.geometry.VPos;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.image.ImageView;
@@ -15,6 +19,14 @@ import java.util.ArrayList;
 
 public class GameController {
 
+    Ship ship;
+
+    AircraftCarrier aircraft = new AircraftCarrier();
+    Destroyer destroyer = new Destroyer();
+    Frigate frigate = new Frigate();
+    Submarine submarine = new Submarine();
+    int shipLength = 1;
+
     @FXML
     private Label playerNickname;
     @FXML
@@ -25,10 +37,6 @@ public class GameController {
 
     @FXML
     private Label turnLabel;
-
-    @FXML
-    private SplitPane splitPane;
-
     PlayerBoard playerBoard;
     ComputerBoard computerBoard;
 
@@ -37,14 +45,15 @@ public class GameController {
     ArrayList<ArrayList<BattleFieldPane>>  playerFieldMatrix = new ArrayList<>();
     ArrayList<ArrayList<BattleFieldPane>>  computerFieldMatrix = new ArrayList<>();
 
+    ArrayList<LogicShip> gameShips;
+
     @FXML
     BattleFieldPane battleFieldPane;
-
-
     private boolean isPlayerTurn = true;
     private boolean isComputerTurn = false;
 
     public void initialize() {
+        //drawShips();
         createBattleFields(playerBattleField, playerFieldMatrix);
         createBattleFields(computerBattleField, computerFieldMatrix);
 
@@ -55,6 +64,11 @@ public class GameController {
         }
         updatePaneState();
         turnLabel.setText("turno de " + nickname);
+    }
+
+    public void drawShips(){
+
+
     }
 
 
@@ -120,7 +134,6 @@ public class GameController {
 
     private void updatePaneState() {
 
-
         for (ArrayList<BattleFieldPane> row : computerFieldMatrix) {
             for (BattleFieldPane pane : row) {
                 pane.getPane().setDisable(isComputerTurn);
@@ -140,15 +153,11 @@ public class GameController {
         }
     }
 
-
     public void checkMatrix(){}
 
     public void turn(){}
 
     public void setPlayerNickname(String playerNickname) {
-        if (nickname == null){
-            this.nickname = "Player";
-        }
         nickname = playerNickname;
         this.playerNickname.setText(nickname);
     }
