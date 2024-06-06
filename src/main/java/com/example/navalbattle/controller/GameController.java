@@ -100,7 +100,7 @@ public class GameController {
             board.showMatrix();
             switchTurn();
             updatePaneState();
-        }else if (board.getMatrix().get(row).get(column) != '0'){
+        }else{
             setImage("bomb", pane);
             board.setCharacter('X',row, column);
             board.showMatrix();
