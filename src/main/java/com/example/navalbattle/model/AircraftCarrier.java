@@ -1,15 +1,10 @@
 package com.example.navalbattle.model;
 
 import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Polyline;
 import javafx.scene.shape.Rectangle;
-import javafx.stage.Stage;
-
-import java.util.ArrayList;
 
 public class AircraftCarrier extends Ship{
     public int amount = 1;

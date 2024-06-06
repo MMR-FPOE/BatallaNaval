@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
+
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -97,6 +98,7 @@ public class BoardController {
                         bPane = battleFieldMatrix.get(i).get(column);
                         coordinate = new Coordinate(i, column);
                     }
+                  
                     if (i == iter){
                         ship.setFirstCoordinate(coordinate);
                     }
@@ -194,13 +196,12 @@ public class BoardController {
     }
 
     public void startGame() throws IOException {
-        playerBoard.showMatrix();
-
         GameController controller = GameStage.getInstance().getGameController();
 
         controller.setPlayerNickname(nickname);
         controller.setPlayerBoard(playerBoard);
         controller.setComputerBoard(computerBoard);
+//      controller.getPlayerNickname(getNickname);
         BoardStage.deleteInstance();
     }
 
