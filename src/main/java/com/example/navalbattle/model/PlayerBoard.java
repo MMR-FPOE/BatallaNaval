@@ -25,16 +25,6 @@ public class PlayerBoard extends Board{
         }
     }
 
-    public void showMatrix(){
-        System.out.println("Player Matrix");
-        for(ArrayList<Character> row: matrix){
-            for(Character character: row){
-                System.out.print(character + " ");
-            }
-            System.out.println(" ");
-        }
-    }
-
     public void setCharacter(Character character, int row, int column){
         matrix.get(row).set(column, character);
     }
@@ -53,4 +43,12 @@ public class PlayerBoard extends Board{
     public String getPlayerNickName() {
         return playerNickName;
     }
+
+    public Ship getAircraftCarrier(){ return aircraft;}
+
+    public Ship getDestroyer(){ return destroyer;}
+    
+    public Ship getFrigate(){ return frigate;}
+
+    public Ship getSubmarine(){ return submarine; }
 }

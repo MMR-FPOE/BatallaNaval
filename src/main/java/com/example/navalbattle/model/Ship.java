@@ -30,6 +30,8 @@ public class Ship {
         return (amount == 0);
     }
 
+
+
     public ArrayList<LogicShip> getLogicShip(){
         return gameShips;
     }

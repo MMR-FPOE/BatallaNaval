@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="045c4e91-218c-4956-a2ad-48effe92f302" name="Changes" comment="" />
+    <list default="true" id="045c4e91-218c-4956-a2ad-48effe92f302" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/controller/BoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/AircraftCarrier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/AircraftCarrier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/BattleFieldPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/BattleFieldPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Destroyer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Destroyer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Frigate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Frigate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Submarine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Submarine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/navalbattle/board-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/navalbattle/board-view.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,7 +59,7 @@
     "git-widget-placeholder": "macm",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Monica/IdeaProjects/AhorcadoProyect/JuegoAhorcado",
+    "last_opened_file_path": "C:/Users/Monica/IdeaProjects/Ships",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
