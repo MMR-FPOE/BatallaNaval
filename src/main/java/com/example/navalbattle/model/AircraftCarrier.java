@@ -28,8 +28,8 @@ public class AircraftCarrier extends Ship{
         logicShip = new LogicShip(super.length);
     }
 
-    public void addShipCoordinates(int row, int column){
-        logicShip.addShip(row,column);
+    public void addShipCoordinates(int row, int column, boolean shipOrientation){
+        logicShip.addShip(row,column, shipOrientation);
     }
 
     public Group drawShip(boolean rotate){
@@ -80,4 +80,5 @@ public class AircraftCarrier extends Ship{
 
         return aircraftGroup;
     }
+
 }

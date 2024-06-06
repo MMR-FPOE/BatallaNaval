@@ -3,13 +3,14 @@ package com.example.navalbattle.model;
 import java.util.ArrayList;
 
 public class PlayerBoard extends Board{
-    public ArrayList<ArrayList<Character>> matrix = new ArrayList<>();;
+    public ArrayList<ArrayList<Character>> matrix = new ArrayList<>();
 
     String playerNickName;
     AircraftCarrier aircraft = new AircraftCarrier();
     Destroyer destroyer = new Destroyer();
     Frigate frigate = new Frigate();
     Submarine submarine = new Submarine();
+
 
     public PlayerBoard() {
         createMatrix();
@@ -33,22 +34,14 @@ public class PlayerBoard extends Board{
         return matrix;
     }
 
-    public void setPlayerNickName(String playerNickName) {
-        if (playerNickName == null){
-            playerNickName = "Player";
-        }
-        this.playerNickName = playerNickName;
-    }
-
-    public String getPlayerNickName() {
-        return playerNickName;
-    }
-
     public Ship getAircraftCarrier(){ return aircraft;}
 
     public Ship getDestroyer(){ return destroyer;}
-    
+
     public Ship getFrigate(){ return frigate;}
 
-    public Ship getSubmarine(){ return submarine; }
+    public Ship getSubmarine(){ return submarine;}
+
+    public String getPlayerNickName() { return playerNickName;}
+
 }
