@@ -4,31 +4,21 @@ import com.example.navalbattle.model.*;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.geometry.HPos;
-import javafx.geometry.Insets;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.control.SplitPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
-
 import java.util.ArrayList;
 
+
 public class GameController {
-
-    Ship ship;
-
-    AircraftCarrier aircraft = new AircraftCarrier();
-    Destroyer destroyer = new Destroyer();
-    Frigate frigate = new Frigate();
-    Submarine submarine = new Submarine();
-    int shipLength = 1;
-
     @FXML
     private Label playerNickname;
+
     @FXML
     private GridPane playerBattleField;
 
@@ -37,23 +27,27 @@ public class GameController {
 
     @FXML
     private Label turnLabel;
+
+    @FXML
+    BattleFieldPane battleFieldPane;
+
     PlayerBoard playerBoard;
     ComputerBoard computerBoard;
-
-    String nickname;
 
     ArrayList<ArrayList<BattleFieldPane>>  playerFieldMatrix = new ArrayList<>();
     ArrayList<ArrayList<BattleFieldPane>>  computerFieldMatrix = new ArrayList<>();
 
-    ArrayList<LogicShip> gameShips;
 
-    @FXML
-    BattleFieldPane battleFieldPane;
+
+    ImageView image;
     private boolean isPlayerTurn = true;
     private boolean isComputerTurn = false;
 
-    public void initialize() {
-        //drawShips();
+    public void initialize(PlayerBoard playerBoard, String nickname) {
+        this.playerBoard = playerBoard;
+        playerNickname.setText(nickname);
+
+        drawShips();
         createBattleFields(playerBattleField, playerFieldMatrix);
         createBattleFields(computerBattleField, computerFieldMatrix);
 
@@ -62,12 +56,38 @@ public class GameController {
                 pane.getPane().setDisable(true);
             }
         }
+
         updatePaneState();
-        turnLabel.setText("turno de " + nickname);
+        turnLabel.setText("Tu turno");
     }
 
     public void drawShips(){
+        Coordinate coordinate;
+        for(Ship ship: playerBoard.getAllShips()){
+            Node node = null;
+            for(LogicShip logicShip: ship.getLogicShips()){
+                coordinate = logicShip.getFirstCoordinate();
+                if (ship instanceof AircraftCarrier){
+                    node = ((AircraftCarrier) ship).drawShip(logicShip.getShipOrientation());
+                }else if (ship instanceof Submarine) {
+                    node = ((Submarine) ship).drawShip(logicShip.getShipOrientation());
+                } else if (ship instanceof Destroyer) {
+                    node = ((Destroyer) ship).drawShip(logicShip.getShipOrientation());
+                } else if (ship instanceof Frigate) {
+                    node = ((Frigate) ship).drawShip(logicShip.getShipOrientation());
+                }
 
+                playerBattleField.add(node, coordinate.getColumn(), coordinate.getRow());
+
+                GridPane.setHalignment(node, HPos.CENTER);
+                GridPane.setValignment(node, VPos.CENTER);
+
+                if (logicShip.getShipOrientation())
+                    GridPane.setColumnSpan(node, ship.length);
+                else
+                    GridPane.setRowSpan(node, ship.length);
+            }
+        }
 
     }
 
@@ -91,45 +111,85 @@ public class GameController {
         int column = GridPane.getColumnIndex(pane);
 
         if (type.equals("clicked") && isPlayerTurn) {
-            setTurn(row, column, pane, computerBoard);
-            PauseTransition pause = new PauseTransition(Duration.seconds(2));
-            pause.setOnFinished(event -> {
-                Computerturn();
-            });
-            pause.play();
-
+            if(computerBoard.getMatrix().get(row).get(column) != '0'){
+                setTurn(row, column, pane, computerBoard);
+                PauseTransition pause = new PauseTransition(Duration.seconds(2));
+                pause.setOnFinished(event -> {
+                    computerTurn();
+                });
+                pause.play();
+            }
         }
     }
 
-    public void Computerturn(){
+    public void computerTurn(){
         Coordinate shot = computerBoard.trowBomb();
         Pane computerPane = playerFieldMatrix.get(shot.row).get(shot.column).getPane();
-        setTurn(shot.getRow(), shot.getColumn(), computerPane, playerBoard);
+        if(playerBoard.getMatrix().get(shot.row).get(shot.column) == '0'){
+            computerTurn();
+        } else {
+            setTurn(shot.getRow(), shot.getColumn(), computerPane, playerBoard);
+        }
     }
 
     public void setTurn(int row, int column, Pane pane, Board board){
-        if (board.getMatrix().get(row).get(column) == ' ') {
-            setImage("splash", pane);
+        if (board.getMatrix().get(row).get(column) != '0'){
+            if (board.getMatrix().get(row).get(column) == ' ') {
+                image = setImage("splash");
+                pane.getChildren().add(image);
+            }else{
+                image = setImage("bomb");
+                pane.getChildren().add(image);
+                Character name = board.getMatrix().get(row).get(column);
+                ArrayList<LogicShip> allShips;
+
+                switch (name){
+                    case 'A':
+                        allShips = board.getAircraftCarrier().getLogicShips();
+                        break;
+                    case 'D':
+                        allShips = board.getDestroyer().getLogicShips();
+                        break;
+                    case 'F':
+                        allShips = board.getFrigate().getLogicShips();
+                        break;
+                    default:
+                        allShips = board.getSubmarine().getLogicShips();
+                        break;
+                    }
+
+                for (LogicShip logicShip: allShips){
+                    for (Coordinate coordinate: logicShip.getShipCoordinates()){
+                        if(row == coordinate.row && column == coordinate.column){
+                            logicShip.lostALife();
+                            if(logicShip.isDied()){
+                                shipIsDied(logicShip, pane);
+                                // Here will be whole win or lose code
+                            }
+                        }
+                    }
+                }
+
+            }
             board.setCharacter('0',row, column);
-            board.showMatrix();
-            switchTurn();
-            updatePaneState();
-        }else{
-            setImage("bomb", pane);
-            board.setCharacter('X',row, column);
-            board.showMatrix();
             switchTurn();
             updatePaneState();
         }
-
     }
 
-    public void setImage(String indentifier, Pane pane){
-
+    public ImageView setImage(String indentifier){
         ImageView image = new ImageView(new javafx.scene.image.Image(String.valueOf(getClass().getResource("/com/example/navalbattle/images/" + indentifier + ".png"))));
-        image.setFitWidth(pane.getWidth());
-        image.setFitHeight(pane.getHeight());
-        pane.getChildren().add(image);
+        image.setFitWidth(40);
+        image.setFitHeight(40);
+        return image;
+    }
+
+    private void shipIsDied(LogicShip logicShip, Pane pane){
+        GridPane gridPane = (GridPane) pane.getParent();
+        for(Coordinate coordinate: logicShip.getShipCoordinates()){
+            image = setImage("detonation");
+            gridPane.add(image, coordinate.column, coordinate.row);
+        }
     }
 
     private void updatePaneState() {
@@ -147,9 +207,9 @@ public class GameController {
         updatePaneState();
 
         if (isPlayerTurn){
-            turnLabel.setText("turno de " + nickname);
+            turnLabel.setText("Tu turno");
         }else{
-            turnLabel.setText("turno de computer");
+            turnLabel.setText("turno de Machine");
         }
     }
 
@@ -157,15 +217,6 @@ public class GameController {
 
     public void turn(){}
 
-    public void setPlayerNickname(String playerNickname) {
-        nickname = playerNickname;
-        this.playerNickname.setText(nickname);
-    }
-
-    public void setPlayerBoard(PlayerBoard playerBoard) {
-        this.playerBoard = playerBoard;
-
-    }
     public void setComputerBoard(ComputerBoard computerBoard){
         this.computerBoard = computerBoard;
     }

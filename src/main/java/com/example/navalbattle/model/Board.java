@@ -1,20 +1,16 @@
 package com.example.navalbattle.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Board {
-
     public ArrayList<ArrayList<Character>> matrix = new ArrayList<>();
+    AircraftCarrier aircraft;
+    Destroyer destroyer;
+    Frigate frigate;
+    Submarine submarine;
 
-    AircraftCarrier aircraft = new AircraftCarrier();
-    Destroyer destroyer = new Destroyer();
-    Frigate frigate = new Frigate();
-    Submarine submarine = new Submarine();
-
-
-    public Board() {
-
-    }
+    public Board() {}
 
     public void createMatrix(){
         for(int i = 0; i < 10; i++){
@@ -26,17 +22,6 @@ public class Board {
         }
     }
 
-
-    public void showMatrix(){
-        System.out.println("Player Matrix");
-        for(ArrayList<Character> row: matrix){
-            for(Character character: row){
-                System.out.print(character + " ");
-            }
-            System.out.println(" ");
-        }
-    }
-
     public void setCharacter(Character character, int row, int column){
         matrix.get(row).set(column, character);
     }
@@ -45,4 +30,11 @@ public class Board {
         return matrix;
     }
 
+    public AircraftCarrier getAircraftCarrier(){ return aircraft;}
+
+    public Destroyer getDestroyer(){ return destroyer;}
+
+    public Frigate getFrigate(){ return frigate;}
+
+    public Submarine getSubmarine(){ return submarine;}
 }

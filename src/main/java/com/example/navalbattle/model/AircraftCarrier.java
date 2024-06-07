@@ -6,6 +6,8 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Polyline;
 import javafx.scene.shape.Rectangle;
 
+import java.util.ArrayList;
+
 public class AircraftCarrier extends Ship{
     public int amount = 1;
 
@@ -30,6 +32,11 @@ public class AircraftCarrier extends Ship{
 
     public void addShipCoordinates(int row, int column, boolean shipOrientation){
         logicShip.addShip(row,column, shipOrientation);
+    }
+
+    public void setShips(ArrayList<Coordinate> coordinates, boolean shipOrientation){
+        logicShip.setShips(coordinates, shipOrientation);
+        this.submitShip();
     }
 
     public Group drawShip(boolean rotate){

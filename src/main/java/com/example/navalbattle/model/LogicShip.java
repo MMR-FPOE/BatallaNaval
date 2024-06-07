@@ -7,8 +7,6 @@ public class LogicShip {
 
     public ArrayList<Coordinate> shipCoordinates;
 
-    public Coordinate firstCoordinate;
-
     boolean shipOrientation;
 
     public LogicShip(int lifes){
@@ -21,14 +19,18 @@ public class LogicShip {
         this.shipOrientation = shipOrientation;
     }
 
+    public void setShips(ArrayList<Coordinate> coordinates, boolean shipOrientation){
+        shipCoordinates = coordinates;
+        this.shipOrientation = shipOrientation;
+    }
+
     public ArrayList<Coordinate> getShipCoordinates(){
         return shipCoordinates;
     }
 
-
-
-    public int getLifes() {
-        return lifes;
+    public void lostALife() { lifes--; }
+    public boolean isDied() {
+        return (lifes == 0);
     }
 
     public boolean getShipOrientation(){
@@ -36,6 +38,6 @@ public class LogicShip {
     }
 
     public Coordinate getFirstCoordinate() {
-        return firstCoordinate;
+        return shipCoordinates.get(0);
     }
 }

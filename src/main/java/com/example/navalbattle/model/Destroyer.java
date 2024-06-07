@@ -1,11 +1,8 @@
 package com.example.navalbattle.model;
 
 import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
-import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
@@ -33,6 +30,11 @@ public class Destroyer extends Ship{
 
     public void addShipCoordinates(int row, int column, boolean shipOrientation){
         logicShip.addShip(row,column, shipOrientation);
+    }
+
+    public void setShips(ArrayList<Coordinate> coordinates, boolean shipOrientation){
+        logicShip.setShips(coordinates, shipOrientation);
+        this.submitShip();
     }
 
     public Group drawShip(boolean rotate){

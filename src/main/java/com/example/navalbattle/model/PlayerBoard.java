@@ -1,19 +1,20 @@
 package com.example.navalbattle.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class PlayerBoard extends Board{
-    public ArrayList<ArrayList<Character>> matrix = new ArrayList<>();
-
-    String playerNickName;
-    AircraftCarrier aircraft = new AircraftCarrier();
-    Destroyer destroyer = new Destroyer();
-    Frigate frigate = new Frigate();
-    Submarine submarine = new Submarine();
-
+    public ArrayList<Ship> allShips;
 
     public PlayerBoard() {
+        super.aircraft = new AircraftCarrier();
+        super.destroyer = new Destroyer();
+        super.frigate = new Frigate();
+        super.submarine = new Submarine();
+        super.matrix = new ArrayList<>();
         createMatrix();
+
+        allShips = new ArrayList<>(Arrays.asList(aircraft, destroyer, frigate, submarine));
     }
 
     public void createMatrix(){
@@ -22,26 +23,26 @@ public class PlayerBoard extends Board{
             for(int j = 0; j < 10; j++){
                 row.add(' ');
             }
-            matrix.add(row);
+            super.matrix.add(row);
         }
     }
 
     public void setCharacter(Character character, int row, int column){
-        matrix.get(row).set(column, character);
+        super.matrix.get(row).set(column, character);
     }
 
     public ArrayList<ArrayList<Character>> getMatrix() {
-        return matrix;
+        return super.matrix;
     }
 
-    public Ship getAircraftCarrier(){ return aircraft;}
+    public AircraftCarrier getAircraftCarrier(){ return super.aircraft;}
 
-    public Ship getDestroyer(){ return destroyer;}
+    public Destroyer getDestroyer(){ return super.destroyer;}
 
-    public Ship getFrigate(){ return frigate;}
+    public Frigate getFrigate(){ return super.frigate;}
 
-    public Ship getSubmarine(){ return submarine;}
+    public Submarine getSubmarine(){ return super.submarine;}
 
-    public String getPlayerNickName() { return playerNickName;}
+    public ArrayList<Ship> getAllShips(){ return allShips; }
 
 }

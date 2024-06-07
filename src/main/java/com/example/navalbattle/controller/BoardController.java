@@ -3,11 +3,9 @@ package com.example.navalbattle.controller;
 import com.example.navalbattle.model.*;
 import com.example.navalbattle.view.BoardStage;
 import com.example.navalbattle.view.GameStage;
-import com.example.navalbattle.view.WelcomeStage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.HPos;
-import javafx.geometry.Insets;
 import javafx.geometry.VPos;
 
 import javafx.scene.Node;
@@ -68,7 +66,6 @@ public class BoardController {
             }
             battleFieldMatrix.add(row);
         }
-        computerBoard.showMatrix();
     }
 
     private void mouseEventClick(MouseEvent event, String type){
@@ -117,13 +114,19 @@ public class BoardController {
 
                     if (ship instanceof AircraftCarrier){
                         node = ((AircraftCarrier) ship).drawShip(shipOrientation);
+                        playerBoard.getAircraftCarrier().setShips(coordinates, shipOrientation);
                     }else if (ship instanceof Submarine) {
                         node = ((Submarine) ship).drawShip(shipOrientation);
+                        playerBoard.getSubmarine().setShips(coordinates, shipOrientation);
                     } else if (ship instanceof Destroyer) {
                         node = ((Destroyer) ship).drawShip(shipOrientation);
+                        playerBoard.getDestroyer().setShips(coordinates, shipOrientation);
                     } else if (ship instanceof Frigate) {
                         node = ((Frigate) ship).drawShip(shipOrientation);
+                        playerBoard.getFrigate().setShips(coordinates, shipOrientation);
                     }
+
+
 
                     battleField.add(node, ship.getFirstCoordinate().getColumn(), ship.getFirstCoordinate().getRow());
 
@@ -135,7 +138,6 @@ public class BoardController {
                     else
                         GridPane.setRowSpan(node, shipLength);
 
-                    GridPane.setMargin(node, new Insets(10));
 
                     for (Coordinate coordinate: coordinates){
                         playerBoard.setCharacter(ship.name, coordinate.row, coordinate.column);
@@ -197,11 +199,8 @@ public class BoardController {
 
     public void startGame() throws IOException {
         GameController controller = GameStage.getInstance().getGameController();
-
-        controller.setPlayerNickname(nickname);
-        controller.setPlayerBoard(playerBoard);
+        controller.initialize(playerBoard, nickname);
         controller.setComputerBoard(computerBoard);
-//      controller.getPlayerNickname(getNickname);
         BoardStage.deleteInstance();
     }
 
