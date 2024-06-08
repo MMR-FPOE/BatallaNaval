@@ -2,7 +2,7 @@ package com.example.navalbattle.model;
 
 public class BoardException extends Exception{
 
-    public BoardException(Throwable cause){
+    public BoardException(String cause){
         super(cause);
     }
 

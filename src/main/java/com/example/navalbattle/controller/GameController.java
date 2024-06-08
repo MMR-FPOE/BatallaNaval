@@ -16,6 +16,8 @@ import javafx.util.Duration;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 public class GameController {
@@ -45,6 +47,7 @@ public class GameController {
     ImageView image;
     private boolean isPlayerTurn = true;
     private boolean isComputerTurn = false;
+    ArrayList<Board> boards;
 
     /**
      * Start controller class
@@ -215,7 +218,7 @@ public class GameController {
             board.setCharacter('0',row, column);
             switchTurn();
             updatePaneState();
-            serialize(board);
+            serialize(playerBoard, computerBoard);
         }
     }
 
@@ -279,13 +282,15 @@ public class GameController {
     }
 
     /**
-     * Method that deserialize
-     * @param board             player's board or machine's board
+     * Method that serialize
+     * @param playerBoard             player's board
+     * @param computerBoard                              machine's board
      */
-    public void serialize(Board board){
+    public void serialize(Board playerBoard, Board computerBoard){
         try (FileOutputStream fileout = new FileOutputStream("board.naval")) {
             ObjectOutputStream out = new ObjectOutputStream(fileout);
-            out.writeObject(board);
+            out.writeObject(playerBoard);
+            out.writeObject(computerBoard);
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -297,10 +302,21 @@ public class GameController {
     public void deserialize(){
         try (FileInputStream fileIn = new FileInputStream("board.naval");
              ObjectInputStream in = new ObjectInputStream(fileIn)){
-             Board board = (Board) in.readObject();
-             System.out.println(board.getMatrix());
-
-        }catch (IOException | ClassNotFoundException e){
+            while (true){
+                try {
+                    Object object = in.readObject();
+                    if(object instanceof PlayerBoard){
+                        playerBoard = (PlayerBoard) object;
+                    } else if(object instanceof ComputerBoard){
+                        computerBoard = (ComputerBoard) object;
+                    }
+                } catch (EOFException e){
+                    break;
+                } catch (ClassNotFoundException e){
+                    e.printStackTrace();
+                }
+            }
+        } catch (IOException e){
             e.printStackTrace();
         }
     }
