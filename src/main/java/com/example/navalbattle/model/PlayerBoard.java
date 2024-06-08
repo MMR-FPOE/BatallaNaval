@@ -1,9 +1,10 @@
 package com.example.navalbattle.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class PlayerBoard extends Board{
+public class PlayerBoard extends Board implements Serializable {
     public ArrayList<Ship> allShips;
 
     public PlayerBoard() {

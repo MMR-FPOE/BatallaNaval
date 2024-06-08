@@ -6,30 +6,48 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Polyline;
 import javafx.scene.shape.Rectangle;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class AircraftCarrier extends Ship{
+public class AircraftCarrier extends Ship implements Serializable {
     public int amount = 1;
 
     public LogicShip logicShip;
 
+    /**
+     * Public AircraftCarrier constructor
+     */
     public AircraftCarrier(){
         super.name = 'A';
         super.length = 4;
         super.available = true;
         logicShip = new LogicShip(super.length);
     }
-  
+
+    /**
+     * Method that return the ship's state
+     * @return     ship state
+     */
     public boolean shipStatus(){
         amount--;
         return (amount == 0);
     }
 
+    /**
+     * Method that submit the ship in game ships
+     */
     public void submitShip(){
         gameShips.add(logicShip);
         logicShip = new LogicShip(super.length);
     }
 
+
+    /**
+     * Method that adds the
+     * @param column     ship's column
+     * @param row        ship's row
+     * @param shipOrientation       orientation of teh ship
+     */
     public void addShipCoordinates(int row, int column, boolean shipOrientation){
         logicShip.addShip(row,column, shipOrientation);
     }

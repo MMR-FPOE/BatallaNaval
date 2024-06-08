@@ -4,11 +4,11 @@ import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Destroyer extends Ship{
+public class Destroyer extends Ship implements Serializable {
     public int amount = 3;
-
     public LogicShip logicShip;
 
     public Destroyer(){

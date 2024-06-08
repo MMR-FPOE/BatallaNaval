@@ -1,8 +1,9 @@
 package com.example.navalbattle.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class LogicShip {
+public class LogicShip implements Serializable {
     public int lifes;
 
     public ArrayList<Coordinate> shipCoordinates;

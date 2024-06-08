@@ -2,7 +2,9 @@ package com.example.navalbattle.model;
 
 import javafx.scene.layout.Pane;
 
-public class BattleFieldPane {
+import java.io.Serializable;
+
+public class BattleFieldPane implements Serializable {
     Pane pane;
     int row, column;
     boolean isClicked = false;

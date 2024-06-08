@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class BoardController {
+
+    FileCRUD fileCRUD;
     Ship ship;
     int shipLength = 1;
     boolean shipOrientation = true;
@@ -50,6 +52,9 @@ public class BoardController {
     @FXML
     private ToggleButton frigateButton;
 
+    /**
+     * Start controller class
+     */
     public void initialize() {
         ship = playerBoard.getFrigate();
         button = frigateButton;
@@ -68,6 +73,11 @@ public class BoardController {
         }
     }
 
+    /**
+     * Method associated with each pane in the gridPane
+     * @param event         Event called when we click on the pane
+     * @param type          Click type
+     */
     private void mouseEventClick(MouseEvent event, String type){
         Pane pane = (Pane) event.getSource();
         int row = GridPane.getRowIndex(pane);
@@ -76,8 +86,17 @@ public class BoardController {
 
         if(shipOrientation){ iter = column;}
         else{ iter = row;}
-        if(iter + shipLength > 9){ iter = 10 - shipLength;}
+
+        try {
+            if(iter + shipLength > 9){
+                throw new IndexOutOfBoundsException("Iter fuera del rango");
+            }
+        } catch (IndexOutOfBoundsException e) {
+            iter = 10 - shipLength;
+        }
+
         if(ship.getAvailability()){ type = "unavailable";}
+
 
         switch(type){
             case "clicked":
@@ -95,7 +114,7 @@ public class BoardController {
                         bPane = battleFieldMatrix.get(i).get(column);
                         coordinate = new Coordinate(i, column);
                     }
-                  
+
                     if (i == iter){
                         ship.setFirstCoordinate(coordinate);
                     }
@@ -174,6 +193,12 @@ public class BoardController {
         }
     }
 
+    /**
+     * Method associated with a Button selecting the type of boat
+     *
+     * @param event         Event called when we click on the toggle button
+     */
+
     public void toggleButtonPressed(ActionEvent event){
         button = (ToggleButton) event.getSource();
         if(Objects.equals(button.getId(), "frigateButton")){
@@ -191,18 +216,37 @@ public class BoardController {
         shipLength = ship.getLength();
     }
 
+    /**
+     * Method associated with a Button that changes the orientation
+     *
+     * @param event         Event called when we click on the button
+     */
     public void changeShipOrientation(ActionEvent event){
         shipOrientation = !shipOrientation;
         if(shipOrientation){ shipOrientationButton.setText("\uD83E\uDC58");}
         else{shipOrientationButton.setText("\uD83E\uDC59");}
     }
 
-    public void startGame() throws IOException {
-        GameController controller = GameStage.getInstance().getGameController();
-        controller.initialize(playerBoard, nickname);
-        controller.setComputerBoard(computerBoard);
-        BoardStage.deleteInstance();
+    /**
+     * Method that starts the game
+     */
+
+    public void startGame(){
+        try{
+            GameController controller = GameStage.getInstance().getGameController();
+            controller.initialize(playerBoard, nickname);
+            controller.setComputerBoard(computerBoard);
+            BoardStage.deleteInstance();
+        } catch (IOException e){
+            System.err.println(e.getMessage());
+        }
     }
+
+    /**
+     * Method that get the player nickname from the welcome controller
+     *
+     * @param nickname         Player nickname
+     */
 
     public void getPlayerNickname(String nickname){
         this.nickname = nickname;

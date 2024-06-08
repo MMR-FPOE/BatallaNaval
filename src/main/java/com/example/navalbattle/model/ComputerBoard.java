@@ -1,8 +1,9 @@
 package com.example.navalbattle.model;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class ComputerBoard extends Board{
+public class ComputerBoard extends Board implements Serializable {
     public ComputerBoard() {
         super.aircraft = new AircraftCarrier();
         super.destroyer = new Destroyer();
@@ -150,7 +151,7 @@ public class ComputerBoard extends Board{
         super.frigate.addShipCoordinates(6, 1, false);
         super.frigate.submitShip();
 
-        super.frigate.addShipCoordinates(2, 1, false);
+        super.frigate.addShipCoordinates(1, 2, false);
         super.frigate.submitShip();
     }
 

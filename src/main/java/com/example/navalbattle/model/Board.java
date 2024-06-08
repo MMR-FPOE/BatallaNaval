@@ -1,9 +1,10 @@
 package com.example.navalbattle.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Board {
+public class Board implements Serializable {
     public ArrayList<ArrayList<Character>> matrix = new ArrayList<>();
     AircraftCarrier aircraft;
     Destroyer destroyer;

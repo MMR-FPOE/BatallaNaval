@@ -1,6 +1,7 @@
 package com.example.navalbattle.controller;
 
 import com.example.navalbattle.model.*;
+import com.example.navalbattle.view.alert.AlertBox;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.geometry.HPos;
@@ -12,6 +13,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+
+import java.io.*;
 import java.util.ArrayList;
 
 
@@ -37,12 +40,17 @@ public class GameController {
     ArrayList<ArrayList<BattleFieldPane>>  playerFieldMatrix = new ArrayList<>();
     ArrayList<ArrayList<BattleFieldPane>>  computerFieldMatrix = new ArrayList<>();
 
-
-
+    int playerNumOfShips = 10;
+    int machineNumOfShips = 10;
     ImageView image;
     private boolean isPlayerTurn = true;
     private boolean isComputerTurn = false;
 
+    /**
+     * Start controller class
+     *
+     * @param playerBoard         player's board
+     */
     public void initialize(PlayerBoard playerBoard, String nickname) {
         this.playerBoard = playerBoard;
         playerNickname.setText(nickname);
@@ -61,10 +69,14 @@ public class GameController {
         turnLabel.setText("Tu turno");
     }
 
+    /**
+     * Method that draw the ships on the gridPane
+     */
     public void drawShips(){
         Coordinate coordinate;
         for(Ship ship: playerBoard.getAllShips()){
             Node node = null;
+
             for(LogicShip logicShip: ship.getLogicShips()){
                 coordinate = logicShip.getFirstCoordinate();
                 if (ship instanceof AircraftCarrier){
@@ -91,7 +103,12 @@ public class GameController {
 
     }
 
-
+    /**
+     * Method associated with a Button selecting the type of boat
+     *
+     * @param BattleField        Gridpane of the player
+     * @param BattleFieldMatrix  Matrix of battlefield pane's
+     */
     public void createBattleFields(GridPane BattleField, ArrayList<ArrayList<BattleFieldPane>>  BattleFieldMatrix ) {
         for (int i = 0; i < 10; i++) {
             ArrayList<BattleFieldPane> row = new ArrayList<>();
@@ -105,6 +122,10 @@ public class GameController {
         }
     }
 
+    /**
+     * Method associated with each pane in the gridPane
+     * @param type                  Click type
+     */
     private void MouseEventClick(MouseEvent mouseEvent, String type) {
         Pane pane = (Pane) mouseEvent.getSource();
         int row = GridPane.getRowIndex(pane);
@@ -113,7 +134,7 @@ public class GameController {
         if (type.equals("clicked") && isPlayerTurn) {
             if(computerBoard.getMatrix().get(row).get(column) != '0'){
                 setTurn(row, column, pane, computerBoard);
-                PauseTransition pause = new PauseTransition(Duration.seconds(2));
+                PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
                 pause.setOnFinished(event -> {
                     computerTurn();
                 });
@@ -122,6 +143,9 @@ public class GameController {
         }
     }
 
+    /**
+     * Method that executes the machine's turn
+     */
     public void computerTurn(){
         Coordinate shot = computerBoard.trowBomb();
         Pane computerPane = playerFieldMatrix.get(shot.row).get(shot.column).getPane();
@@ -132,6 +156,11 @@ public class GameController {
         }
     }
 
+    /**
+     * Method executes each turn
+     * @param row                  shooting row
+     * @param column                shooting column
+     */
     public void setTurn(int row, int column, Pane pane, Board board){
         if (board.getMatrix().get(row).get(column) != '0'){
             if (board.getMatrix().get(row).get(column) == ' ') {
@@ -164,7 +193,19 @@ public class GameController {
                             logicShip.lostALife();
                             if(logicShip.isDied()){
                                 shipIsDied(logicShip, pane);
-                                // Here will be whole win or lose code
+
+                                if (isPlayerTurn){
+                                    machineNumOfShips--;
+                                    if (machineNumOfShips == 0){
+                                        new AlertBox().WinOrLose("Ganaste " + playerNickname.getText(), "El juego terminó", "¡Derrotaste a la máquina!");
+                                    }
+                                }else{
+                                    playerNumOfShips--;
+                                    if (playerNumOfShips == 0){
+                                        new AlertBox().WinOrLose("Perdiste " + playerNickname.getText(), "El juego terminó", "La máquina gana!");
+                                    }
+                                }
+
                             }
                         }
                     }
@@ -174,9 +215,15 @@ public class GameController {
             board.setCharacter('0',row, column);
             switchTurn();
             updatePaneState();
+            serialize(board);
         }
     }
 
+    /**
+     * Method that set the image according to the identifier
+     * @param indentifier     image identifier
+     * @return                imageView object
+     */
     public ImageView setImage(String indentifier){
         ImageView image = new ImageView(new javafx.scene.image.Image(String.valueOf(getClass().getResource("/com/example/navalbattle/images/" + indentifier + ".png"))));
         image.setFitWidth(40);
@@ -184,6 +231,11 @@ public class GameController {
         return image;
     }
 
+    /**
+     * Method that set the image according to the identifier
+     * @param logicShip         coordinates of each board
+     * @param pane              pane to distinguish the grid
+     */
     private void shipIsDied(LogicShip logicShip, Pane pane){
         GridPane gridPane = (GridPane) pane.getParent();
         for(Coordinate coordinate: logicShip.getShipCoordinates()){
@@ -192,6 +244,9 @@ public class GameController {
         }
     }
 
+    /**
+     * Method that disables the pane depending on machine's turn
+     */
     private void updatePaneState() {
 
         for (ArrayList<BattleFieldPane> row : computerFieldMatrix) {
@@ -201,6 +256,9 @@ public class GameController {
         }
     }
 
+    /**
+     * Method that switch turn and updates the pane
+     */
     private void switchTurn() {
         isPlayerTurn = !isPlayerTurn;
         isComputerTurn = !isComputerTurn;
@@ -213,11 +271,37 @@ public class GameController {
         }
     }
 
-    public void checkMatrix(){}
-
-    public void turn(){}
-
+    /**
+     * Method that switch turn and updates the pane
+     */
     public void setComputerBoard(ComputerBoard computerBoard){
         this.computerBoard = computerBoard;
+    }
+
+    /**
+     * Method that deserialize
+     * @param board             player's board or machine's board
+     */
+    public void serialize(Board board){
+        try (FileOutputStream fileout = new FileOutputStream("board.naval")) {
+            ObjectOutputStream out = new ObjectOutputStream(fileout);
+            out.writeObject(board);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Method that deserialize
+     */
+    public void deserialize(){
+        try (FileInputStream fileIn = new FileInputStream("board.naval");
+             ObjectInputStream in = new ObjectInputStream(fileIn)){
+             Board board = (Board) in.readObject();
+             System.out.println(board.getMatrix());
+
+        }catch (IOException | ClassNotFoundException e){
+            e.printStackTrace();
+        }
     }
 }

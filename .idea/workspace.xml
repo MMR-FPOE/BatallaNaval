@@ -9,27 +9,39 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/controller/BoardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/controller/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/AircraftCarrier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/AircraftCarrier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/BattleFieldPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/BattleFieldPane.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/ComputerBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/ComputerBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Coordinate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Coordinate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Destroyer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Destroyer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Frigate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Frigate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/IShip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/IShip.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/LogicShip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/LogicShip.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/PlayerBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/PlayerBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Ship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Ship.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Submarine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/model/Submarine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/navalbattle/game-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/navalbattle/game-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/view/alert/AlertBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/view/alert/AlertBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/view/alert/IAlertBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/navalbattle/view/alert/IAlertBox.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
@@ -38,6 +50,7 @@
     "Application.Main.executor": "Run",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Monica/IdeaProjects/SudokuGame",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
