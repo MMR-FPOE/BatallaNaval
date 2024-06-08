@@ -52,11 +52,21 @@ public class AircraftCarrier extends Ship implements Serializable {
         logicShip.addShip(row,column, shipOrientation);
     }
 
+    /**
+     * Method that set the logic ship in the array of logic ships
+     * @param coordinates   array of coordinates
+     * @param shipOrientation    ships orientation
+     */
     public void setShips(ArrayList<Coordinate> coordinates, boolean shipOrientation){
         logicShip.setShips(coordinates, shipOrientation);
         this.submitShip();
     }
 
+    /**
+     * Method that draw the ship
+     * @param rotate   true if the ship is rotated
+     * @return          group of the java 2D shapes
+     */
     public Group drawShip(boolean rotate){
         Group aircraftGroup = new Group();
 

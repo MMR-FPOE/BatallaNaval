@@ -12,6 +12,9 @@ public class Frigate extends Ship implements Serializable {
 
     public LogicShip logicShip;
 
+    /**
+     * Public Frigate constructor
+     */
     public Frigate(){
         super.name = 'F';
         super.length = 1;
@@ -19,25 +22,48 @@ public class Frigate extends Ship implements Serializable {
         logicShip = new LogicShip(super.length);
     }
 
+    /**
+     * Method that return the ship's state
+     * @return     ship state
+     */
     public boolean shipStatus(){
         amount--;
         return (amount == 0);
     }
 
+    /**
+     * Method that submit the ship in game ships
+     */
     public void submitShip(){
         gameShips.add(logicShip);
         logicShip = new LogicShip(super.length);
     }
 
+    /**
+     * Method that adds the
+     * @param column     ship's column
+     * @param row        ship's row
+     * @param shipOrientation       orientation of teh ship
+     */
     public void addShipCoordinates(int row, int column, boolean shipOrientation){
         logicShip.addShip(row,column, shipOrientation);
     }
 
+    /**
+     * Method that set the logic ship in the array of logic ships
+     * @param coordinates   array of coordinates
+     * @param shipOrientation    ships orientation
+     */
     public void setShips(ArrayList<Coordinate> coordinates, boolean shipOrientation){
         logicShip.setShips(coordinates, shipOrientation);
         this.submitShip();
     }
 
+    /**
+     * Method that draw the ship
+     * @param rotate   true if the ship is rotated
+     * @return          group of the java 2D shapes
+     */
     public Group drawShip(boolean rotate){
         Group frigateGroup = new Group();
 

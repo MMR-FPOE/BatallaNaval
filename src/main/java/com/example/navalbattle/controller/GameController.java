@@ -50,6 +50,7 @@ public class GameController {
      * Start controller class
      *
      * @param playerBoard         player's board
+     * @param nickname            player's nickname
      */
     public void initialize(PlayerBoard playerBoard, String nickname) {
         this.playerBoard = playerBoard;
